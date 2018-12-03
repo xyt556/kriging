@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 
 
-rawdat = pd.read_csv('C:\\Users\\ZiXian\\Documents\\PNG 497\\Project\\wmarker3_dat.csv', header=None, names=['X','Y','Z'] )
+rawdat = pd.read_csv('wmarker3_dat.csv', header=None, names=['X','Y','Z'] )
 X = rawdat.iloc[:,0] # X Coordinates
 X = np.array(X.values,dtype=np.float64) 
 Y = rawdat.iloc[:,1] #Y Coordinates
