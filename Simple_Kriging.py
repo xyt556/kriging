@@ -16,7 +16,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib import cm
 
-
 rawdat = pd.read_csv('wmarker3_dat.csv', header=None, names=['X','Y','Z'] )
 X = rawdat.iloc[:,0] # X Coordinates
 X = np.array(X.values,dtype=np.float64) 
@@ -48,7 +47,6 @@ for row in range(len(dist_table[0])):
 #Inverse Matrix
 c_inv = inv(np.matrix(cov_table, dtype='float'))
 
-
 #coordinates of target points
 stride = 10 #take a target estimation point at every 10th pixel
 x_mesh = []
@@ -59,7 +57,6 @@ y_mesh = []
 for i in range(int(round(min(Y))-stride), int(round(max(Y)))+stride,stride):
     y_mesh.append(i)
     
-
 #distance to target
 canvas_dist = np.tile(None,(len(x_mesh),len(y_mesh)))
 
@@ -110,9 +107,7 @@ for i in range(len(x_mesh)):
         for k in range(len(X)):
             inside.append(weights[i][j][k]*Z[k])
         weighted_sum[i,j]=sum(inside)
-        
-         
-        
+                      
 z_pred = np.tile(None,(len(x_mesh),len(y_mesh)))
 for i in range(len(x_mesh)):
     for j in range(len(y_mesh)):
