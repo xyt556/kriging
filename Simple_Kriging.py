@@ -50,11 +50,11 @@ c_inv = inv(np.matrix(cov_table, dtype='float'))
 #coordinates of target points
 stride = 10 #take a target estimation point at every 10th pixel
 x_mesh = []
-for i in range(int(round(min(X))-stride), int(round(max(X)))+stride,stride):
+for i in range(int(round(10-stride)), int(round(3000+stride)),stride):
     x_mesh.append(i)
     
 y_mesh = []
-for i in range(int(round(min(Y))-stride), int(round(max(Y)))+stride,stride):
+for i in range(int(round(10-stride)), int(round(3400+stride)),stride):
     y_mesh.append(i)
     
 #distance to target
@@ -118,21 +118,22 @@ z_pred = z_pred.astype(float)
 ##################################################
 #2D Plot
 
-plt.contourf(x_mesh,y_mesh,np.transpose(z_pred),30)
-plt.colorbar()
 
-for i in range(len(Z)):
-    x = X[i]
-    y = Y[i]
-    plt.plot(x, y, 'ro')
-    plt.text(x * (1 + 0.01), y * (1 + 0.01) , round(Z[i]), fontsize=8)
-
-plt.xlim(min(x_mesh),max(x_mesh))
-plt.ylim(min(y_mesh),max(y_mesh))
-plt.xlabel('X')
-plt.ylabel('Y')
-plt.title('Simple Kriging')
-#plt.savefig('Fig/SK_2D.png',dpi=600)
+#plt.contourf(x_mesh,y_mesh,np.transpose(z_pred),40)
+#plt.colorbar()
+#
+#for i in range(len(Z)):
+#    x = X[i]
+#    y = Y[i]
+#    plt.plot(x, y, 'ro')
+#    plt.text(x * (1 + 0.01), y * (1 + 0.01) , round(Z[i]), fontsize=5)
+#
+#plt.xlim(min(x_mesh),max(x_mesh))
+#plt.ylim(min(y_mesh),max(y_mesh))
+#plt.xlabel('X')
+#plt.ylabel('Y')
+#plt.title('Simple Kriging')
+#plt.savefig('Fig/SK_2D_NewCov.png',dpi=600)
 
 ##########################################################################
 #3D Plot
@@ -143,16 +144,20 @@ plt.title('Simple Kriging')
 #fig = plt.figure()
 #ax = Axes3D(fig)
 #x_mesh_g, y_mesh_g = np.meshgrid(x_mesh,y_mesh)
-#surf = ax.plot_surface(x_mesh_g, y_mesh_g, np.transpose(z_pred))
-#ax.view_init(10, -265)
-#ax.scatter(X,Y,Z, color='red', s=25)
+#ax.scatter(X,Y,Z, color='black', s=50)
+#surf = ax.plot_surface(x_mesh_g, y_mesh_g, np.transpose(z_pred), cmap=cm.coolwarm)
+#ax.view_init(30, 120)
 #ax.set_xlabel('X', fontsize=12)
 #ax.set_ylabel('Y', fontsize=12)
 #ax.set_zlabel('Marker Depth', fontsize=12)
-#ax.tick_params(labelsize=6)
+#ax.tick_params(labelsize=5)
+#fig.colorbar(surf)
 #plt.title('Simple Kriging')
 #plt.show()
-#fig.savefig('Fig/SK_3D.png', dpi=600)
+#
+#
+#
+#fig.savefig('Fig/SK_3D_NewCov_2.png', dpi=600)
 
 ##########################################################################
 
